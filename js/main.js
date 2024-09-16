@@ -1,3 +1,11 @@
+let productos= []
+console.log("soy el local",localStorage)
+let cartStorage
+if (localStorage.length !== 0 ){
+    cartStorage = localStorage.getItem("cartProducts")
+    cartStorage = JSON.parse(cartStorage)
+    console.log("soy yo",cartStorage)
+}
 
 class Jean {
     static id = 0
@@ -13,7 +21,7 @@ class Jean {
     }
 
 }
-const productos= []
+
 const cat_ini = 0
 const jean1 = new Jean("jean","you","strech pitilo",75,cat_ini)
 const jean2 = new Jean("jean","you","strech flare",80,cat_ini)
@@ -28,16 +36,31 @@ let cartProducts = []
 
 let productsContainer = document.getElementById("products-container")
 
+function rellenarCantidades(cartItems){
+    productos.forEach(elemeto => {
+         cartItems.forEach(elm_guardado =>{
+             if (elemeto.id == elm_guardado.id){
+                 elemeto.cantida=elm_guardado.cantida
+                console.log("si ahy concidencia")
+            }
+        })
+    })
+    
+}
+if (localStorage.length !== 0 ){
+    rellenarCantidades(cartStorage)
+}
+
+
 function renderProductos(productsArray) {
     productsArray.forEach(producto => {
         const card = document.createElement("div")
         card.className = "cont_producto"
-        card.innerHTML = `<div class="produc">
+        card.innerHTML = `<div class=produc>
                         <h3> ${producto.nombre} marca: ${producto.marca}</h3>
                           <h4> Modelo: ${producto.modelo}</h4>
                           <h4> Precio: S/. ${producto.precio}</h4>
-                          <h4 > Cantidad</h4>
-                          <span  class="cont_cant" id="${producto.id}"> 0</span>
+                          <span  class="cont_cant" id="${producto.id}"> ${producto.cantida}</span>
                           <button class="but_sum" id="${producto.id}">+</button>
                           <button class="but_res" id="${producto.id}">-</button>
                           <button class="productoAgregar" id="${producto.id}">Agregar</button>
