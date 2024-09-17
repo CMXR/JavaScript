@@ -128,9 +128,9 @@ function totalGeneral (cartItems) {
     const card = document.createElement("div")
     card.innerHTML = `<h2 class="total_compra">  Totol de compra: ${totalCompra}</h2>`
     cartContainer.appendChild(card)  
-    
+
     localStorage.setItem("totalCompraMemoria", totalCompra)
-            console.log("souy sososo",totalCompra)
+            
 
 }
             
