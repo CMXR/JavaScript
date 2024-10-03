@@ -1,40 +1,30 @@
+
 let productos= []
+fetch("./db/data.json")
+.then(response => response.json())
+.then(data => {  console.log(data)
+    productos = data
+
+
 console.log("soy el local",localStorage)
 let cartStorage
-if (localStorage.length !== 0 ){
-    cartStorage = localStorage.getItem("cartProducts")
-    cartStorage = JSON.parse(cartStorage)
-    console.log("soy yo",cartStorage)
-}
 
-class Jean {
-    static id = 0
+cartStorage = localStorage.getItem("cartProducts")
+cartStorage = JSON.parse(cartStorage)
+console.log("soy yo",cartStorage)
 
-    constructor (nombre,marca, modelo, precio,cantida) {
-        this.id = ++Jean.id
-        this.nombre = nombre
-        this.marca = marca,
-        this.modelo = modelo,
-        this.precio = precio
-        this.cantida = cantida
 
-    }
-
-}
-
-const cat_ini = 0
-const jean1 = new Jean("jean","you","strech pitilo",75,cat_ini)
-const jean2 = new Jean("jean","you","strech flare",80,cat_ini)
-const jean3 = new Jean("jean","you","tela rigida",95,cat_ini)
-const jean4 = new Jean("jean","ambeth","strech pitilo",75,cat_ini)
-const jean5 = new Jean("jean","ambeth","strech flare",75,cat_ini)
-const jean6 = new Jean("jean","ambeth","tela rigida",75,cat_ini)
-
-productos.push(jean1,jean2,jean3,jean4,jean5,jean6)
 
 let cartProducts = []
 
+if(cartStorage !== null){
+    console.log("estoy lleno")
+    
+    cartProducts =cartStorage
+}
+
 let productsContainer = document.getElementById("products-container")
+console.log("soy producto  sss",productos)
 
 function rellenarCantidades(cartItems){
     productos.forEach(elemeto => {
@@ -75,7 +65,6 @@ function renderProductos(productsArray) {
 
 
 
-
 function cantidad_producto () {
     
     sumar_cant = document.querySelectorAll(".but_sum")
@@ -89,9 +78,12 @@ function cantidad_producto () {
             selectedProduct.cantida ++
             let cont_cant= document.getElementById(productId)
             cont_cant.innerHTML = selectedProduct.cantida
+
+           
             
             
         }
+        
     })
 
     restar_cant.forEach(button => {
@@ -122,6 +114,7 @@ function addToCartButton () {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
+            
 
             if (selectedProduct.cantida===0){
                 selectedProduct.cantida ++
@@ -135,6 +128,8 @@ function addToCartButton () {
                 cartProducts.push(selectedProduct)
                 // console.log("es difernte")
             }
+            const posicionProducto = productos.findIndex(producto => producto.id == productId)
+            cartProducts[posicionProducto].cantida=selectedProduct.cantida
 
             console.log(cartProducts)
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
@@ -142,3 +137,5 @@ function addToCartButton () {
         }
     })
 }
+
+})

@@ -1,0 +1,50 @@
+[
+    {
+        "id": 0, 
+        "nombre": "Jean", 
+        "marca": "You",
+        "modelo": "strech pitilo",
+        "precio": 75,
+        "cantida": 0
+    },
+    {
+        "id": 1, 
+        "nombre": "Jean", 
+        "marca": "You",
+        "modelo": "strech flare",
+        "precio": 80,
+        "cantida": 0
+    },
+    {
+        "id": 2, 
+        "nombre": "Jean", 
+        "marca": "You",
+        "modelo": "tela rigida",
+        "precio": 95,
+        "cantida": 0
+    },
+    {
+        "id": 3, 
+        "nombre": "Jean", 
+        "marca": "Ambeth",
+        "modelo": "strech pitilo",
+        "precio": 75,
+        "cantida": 0
+    },
+    {
+        "id": 4, 
+        "nombre": "Jean", 
+        "marca": "Ambeth",
+        "modelo": "strech flare",
+        "precio": 75,
+        "cantida": 0
+    },
+    {
+        "id": 5, 
+        "nombre": "Jean", 
+        "marca": "Ambeth",
+        "modelo": "tela rigida",
+        "precio": 75,
+        "cantida": 0
+    }
+]
