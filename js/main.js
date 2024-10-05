@@ -41,7 +41,7 @@ if (localStorage.length !== 0 ){
     rellenarCantidades(cartStorage)
 }
 
-
+checkCarrito()
 function renderProductos(productsArray) {
     productsArray.forEach(producto => {
         const card = document.createElement("div")
@@ -60,6 +60,20 @@ function renderProductos(productsArray) {
     })
     cantidad_producto ()
     addToCartButton()
+    
+}
+function checkCarrito(){
+    confir_carrito = document.getElementById('ir-carrito')
+    confir_carrito.onclick= (e) => {
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
 }
 
 
@@ -112,6 +126,23 @@ function addToCartButton () {
     addButton = document.querySelectorAll(".productoAgregar")
     addButton.forEach(button => {
         button.onclick = (e) => {
+            
+            Toastify({
+                text: "Producto agregado",
+                duration: 1500,
+                //destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "left", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #c47726, #ffe930)",
+                },
+                onClick: function(){} // Callback after click
+              }).showToast();
+
+            
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
             
@@ -128,10 +159,17 @@ function addToCartButton () {
                 cartProducts.push(selectedProduct)
                 // console.log("es difernte")
             }
-            const posicionProducto = productos.findIndex(producto => producto.id == productId)
+            
+            const posicionProducto = cartProducts.findIndex(producto => producto.id == productId)
+            
+            // console.log(posicionProducto)
+            // console.log( productos[posicionProducto])
+            // console.log(selectedProduct.cantida)
+            
             cartProducts[posicionProducto].cantida=selectedProduct.cantida
 
             console.log(cartProducts)
+            
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
             
         }

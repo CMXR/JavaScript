@@ -1,6 +1,6 @@
 [
     {
-        "id": 0, 
+        "id": 1, 
         "nombre": "Jean", 
         "marca": "You",
         "modelo": "strech pitilo",
@@ -8,7 +8,7 @@
         "cantida": 0
     },
     {
-        "id": 1, 
+        "id": 2, 
         "nombre": "Jean", 
         "marca": "You",
         "modelo": "strech flare",
@@ -16,7 +16,7 @@
         "cantida": 0
     },
     {
-        "id": 2, 
+        "id": 3, 
         "nombre": "Jean", 
         "marca": "You",
         "modelo": "tela rigida",
@@ -24,7 +24,7 @@
         "cantida": 0
     },
     {
-        "id": 3, 
+        "id": 4, 
         "nombre": "Jean", 
         "marca": "Ambeth",
         "modelo": "strech pitilo",
@@ -32,7 +32,7 @@
         "cantida": 0
     },
     {
-        "id": 4, 
+        "id": 5, 
         "nombre": "Jean", 
         "marca": "Ambeth",
         "modelo": "strech flare",
@@ -40,7 +40,7 @@
         "cantida": 0
     },
     {
-        "id": 5, 
+        "id": 6, 
         "nombre": "Jean", 
         "marca": "Ambeth",
         "modelo": "tela rigida",

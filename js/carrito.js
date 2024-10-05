@@ -2,10 +2,31 @@
 
 let regresar_menu=document.getElementById("regresarCarrito")
 let borrar_todo_carrito=document.getElementById("borrarCarrito")
-borrar_todo_carrito.onclick = () => { 
-     localStorage.clear()
+
+
+borrar_todo_carrito.onclick = (e) => {
+    
+    Swal.fire({
+        title: "Esta seguro que desea eliminar todo el carrito?",
+        text: "Se eliminara todos los productos",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear()
+            location.reload()
+
+        }
+        });
+
+
+    
     
 }
+    
 
 console.log(localStorage.getItem("cartProducts"))
 if(localStorage.getItem("cartProducts") !== null){
@@ -56,13 +77,35 @@ function cantidad_producto (cartItems) {
     console.log("holi sosoy el carritoy",cartItems)
     sumar_cant.forEach(button => {
         button.onclick = (e) => {
+
+            Swal.fire({
+                title: "Escriba sus datos",
+                text: "Escriba su nombre completo",
+                input: "text",
+                inputAttributes: {
+                  autocapitalize: "off"
+                },
+                showCancelButton: true,
+                confirmButtonText: "Confirmar",
+                showLoaderOnConfirm: true,
+                
+               
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  
+                }
+              });
+
+
+
+
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
             selectedProduct.cantida ++
             const posicionProducto = productos.findIndex(producto => producto.id == productId)
             cartItems[posicionProducto].cantida=selectedProduct.cantida
             localStorage.setItem("cartProducts", JSON.stringify(cartItems))
-            location.reload()
+            //location.reload()
         }
     })
 
@@ -70,20 +113,24 @@ function cantidad_producto (cartItems) {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
+            
+            
             if (selectedProduct.cantida > 0){
                 selectedProduct.cantida --
                 const posicionProducto = productos.findIndex(producto => producto.id == productId)
                 cartItems[posicionProducto].cantida=selectedProduct.cantida
+                
+                if (selectedProduct.cantida  < 1){
+                    cartItems.splice(posicionProducto, 1)
+                    location.reload()
+                }
                 localStorage.setItem("cartProducts", JSON.stringify(cartItems))
                 location.reload()
             }
-            
-
-            
+              
             let cont_cant= document.getElementById(productId)
-
             cont_cant.innerHTML = selectedProduct.cantida
-            // location.reload() 
+       
             
         }
     })
@@ -92,6 +139,11 @@ function cantidad_producto (cartItems) {
 }
 
 function eliminarElemeto (cartItems) {
+
+    
+    
+
+      
     eliminar = document.querySelectorAll(".eliminar")
     
     let productos = cartItems
@@ -101,12 +153,31 @@ function eliminarElemeto (cartItems) {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
             const posicionProducto = productos.findIndex(producto => producto.id == productId)
-            cartItems.splice(posicionProducto, 1)
-            console.log("elimine el",posicionProducto)
-            localStorage.setItem("cartProducts", JSON.stringify(cartItems))
-            location.reload()
+
+            Swal.fire({
+                title: "Desea Eliminar el producto?",
+                text: "Se eliminara el producto del carrito",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, Eliminar"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    cartItems.splice(posicionProducto, 1)
+                    localStorage.setItem("cartProducts", JSON.stringify(cartItems))
+                    location.reload()
+
+                }
+              });
+
+
+            
+            
         }
     })
+
+    
 
 }
 
