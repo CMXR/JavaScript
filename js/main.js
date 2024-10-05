@@ -6,32 +6,31 @@ fetch("./db/data.json")
     productos = data
 
 
-console.log("soy el local",localStorage)
+
 let cartStorage
 
 cartStorage = localStorage.getItem("cartProducts")
 cartStorage = JSON.parse(cartStorage)
-console.log("soy yo",cartStorage)
+
 
 
 
 let cartProducts = []
 
 if(cartStorage !== null){
-    console.log("estoy lleno")
-    
+
     cartProducts =cartStorage
 }
 
 let productsContainer = document.getElementById("products-container")
-console.log("soy producto  sss",productos)
+
 
 function rellenarCantidades(cartItems){
     productos.forEach(elemeto => {
          cartItems.forEach(elm_guardado =>{
              if (elemeto.id == elm_guardado.id){
                  elemeto.cantida=elm_guardado.cantida
-                console.log("si ahy concidencia")
+
             }
         })
     })
@@ -157,18 +156,14 @@ function addToCartButton () {
                 }
             if (cartProducts.some((producto)=> producto.id == productId) !== true ){
                 cartProducts.push(selectedProduct)
-                // console.log("es difernte")
+
             }
             
             const posicionProducto = cartProducts.findIndex(producto => producto.id == productId)
             
-            // console.log(posicionProducto)
-            // console.log( productos[posicionProducto])
-            // console.log(selectedProduct.cantida)
-            
+
             cartProducts[posicionProducto].cantida=selectedProduct.cantida
 
-            console.log(cartProducts)
             
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
             

@@ -28,17 +28,13 @@ borrar_todo_carrito.onclick = (e) => {
 }
     
 
-console.log(localStorage.getItem("cartProducts"))
+
 if(localStorage.getItem("cartProducts") !== null){
 
 let cartStorage = localStorage.getItem("cartProducts")
 cartStorage = JSON.parse(cartStorage)
 
 let cartContainer = document.getElementById("cart-section")
-
-console.log("soy yo",cartStorage)
-
-
 
 
 
@@ -73,39 +69,16 @@ function cantidad_producto (cartItems) {
     restar_cant = document.querySelectorAll(".but_res")
 
     let productos = cartItems
-    
-    console.log("holi sosoy el carritoy",cartItems)
+
     sumar_cant.forEach(button => {
         button.onclick = (e) => {
-
-            Swal.fire({
-                title: "Escriba sus datos",
-                text: "Escriba su nombre completo",
-                input: "text",
-                inputAttributes: {
-                  autocapitalize: "off"
-                },
-                showCancelButton: true,
-                confirmButtonText: "Confirmar",
-                showLoaderOnConfirm: true,
-                
-               
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  
-                }
-              });
-
-
-
-
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
             selectedProduct.cantida ++
             const posicionProducto = productos.findIndex(producto => producto.id == productId)
             cartItems[posicionProducto].cantida=selectedProduct.cantida
             localStorage.setItem("cartProducts", JSON.stringify(cartItems))
-            //location.reload()
+            location.reload()
         }
     })
 
@@ -148,7 +121,7 @@ function eliminarElemeto (cartItems) {
     
     let productos = cartItems
     
-    console.log("holi sosoy el carritoy",cartItems)
+    
     eliminar.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
@@ -213,8 +186,5 @@ else{
     card.innerHTML = `<h2 class="car_vacio"> SU CARRITO ESTA VACIO AGREGE PRODUCTOS PARA CONTINUAR</h2> `
     cartContainer.appendChild(card)  
    
-    
 
-
-    console.log("estoy vacio")
 }
