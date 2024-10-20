@@ -62,6 +62,19 @@ function renderCarrito (cartItems) {
     })
     totalGeneral (cartItems)
     
+
+                        
+                        
+    
 } 
+
+let regresar_borrar = document.getElementById("regresarCarritoBorrar")
+regresar_borrar.onclick = (e) => {
+
+    localStorage.clear()
+    window.location.href = '../index.html';
+}
+
+
 
 renderCarrito (cartStorage)
