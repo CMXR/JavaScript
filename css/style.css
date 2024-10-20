@@ -76,3 +76,34 @@
     font-size: 30px;
     color: white;
 }
+
+.cont_datos{
+    display: grid;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+    scale: 80%;
+    background-color: rgb(255, 238, 203);
+
+
+}
+.cont_datos input{
+    
+    text-align: center;
+    
+
+}
+
+.enviar_datos{
+    background-color: brown;
+    text-decoration: none;
+
+
+}
+.enviar_datos a{
+    color: white;
+    text-decoration: none;
+    size: 300px;
+    
+
+}
